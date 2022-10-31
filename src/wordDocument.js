@@ -163,7 +163,7 @@ export const generateWordDocument = async (
 					new Paragraph({
 						children: [
 							new TextRun({
-								text: 'Workflow',
+								text: 'Deliverables',
 								break: 1,
 								font: 'arial',
 								color: '#5A5A5A',

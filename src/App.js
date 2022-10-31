@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+// import logo from './ekata.png';
 import { generateWordDocument } from './wordDocument';
 
 import Button from '@mui/material/Button';
@@ -39,9 +40,7 @@ function App() {
 					justifyContent: 'center',
 					flexDirection: 'column',
 				}}
-			>
-				<h1>Joint Test Plan</h1>
-			</div>
+			></div>
 			<Card
 				style={{
 					width: '55%',
@@ -49,10 +48,19 @@ function App() {
 					justifyContent: 'center',
 					alignItems: 'center',
 					margin: 'auto',
-					padding: '4rem',
+					padding: '3rem',
+					marginTop: '20px',
 				}}
 			>
+				{/* <div>
+					<img
+						src={logo}
+						alt=''
+					/>
+				</div> */}
 				<FormControl style={{ width: '95%' }}>
+					<h1>Joint Test Plan</h1>
+					<h3>Customer</h3>
 					<TextField
 						id='outlined-basic'
 						label='Customer Name'
@@ -109,6 +117,7 @@ function App() {
 						variant='outlined'
 						onChange={onCustomerDeliverChange}
 					/>
+					<h3 style={{ marginTop: '35px' }}>Workflow</h3>
 				</FormControl>
 			</Card>
 			<section
