@@ -13,7 +13,10 @@ export const generateWordDocument = async (
 	latency,
 	throughput,
 	geographies,
-	analysisMethod
+	analysisMethod,
+	decisionFactor,
+	ekataDeliver,
+	customerDeliver
 ) => {
 	let doc = new Document({
 		sections: [
@@ -138,6 +141,55 @@ export const generateWordDocument = async (
 						children: [
 							new TextRun({
 								text: `Analysis Method: ${analysisMethod}`,
+								bold: true,
+								font: 'arial',
+								color: '#000000',
+								size: 20,
+							}),
+						],
+					}),
+					new Paragraph({
+						bullet: { level: 0 },
+						children: [
+							new TextRun({
+								text: `Key Decisioning Factor: ${decisionFactor}`,
+								bold: true,
+								font: 'arial',
+								color: '#000000',
+								size: 20,
+							}),
+						],
+					}),
+					new Paragraph({
+						children: [
+							new TextRun({
+								text: 'Workflow',
+								break: 1,
+								font: 'arial',
+								color: '#999999',
+								size: 28,
+							}),
+						],
+					}),
+					new Paragraph({
+						bullet: { level: 0 },
+						break: 1,
+						children: [
+							new TextRun({
+								text: `Ekata: ${ekataDeliver}`,
+								bold: true,
+								font: 'arial',
+								color: '#000000',
+								size: 20,
+							}),
+						],
+					}),
+					new Paragraph({
+						bullet: { level: 0 },
+						break: 1,
+						children: [
+							new TextRun({
+								text: `${customer}: ${customerDeliver}`,
 								bold: true,
 								font: 'arial',
 								color: '#000000',

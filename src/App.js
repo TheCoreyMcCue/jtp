@@ -3,7 +3,7 @@ import './App.css';
 import { generateWordDocument } from './wordDocument';
 
 import Button from '@mui/material/Button';
-import { FormControl, TextField } from '@mui/material';
+import { Card, FormControl, TextField } from '@mui/material';
 
 function App() {
 	const [customerName, setCustomerName] = useState('');
@@ -11,6 +11,9 @@ function App() {
 	const [throughput, setThroughput] = useState('');
 	const [geographies, setGeographies] = useState('');
 	const [analysisMethods, setAnalysisMethods] = useState('');
+	const [decisionFactor, setDecisionFactor] = useState('');
+	const [ekataDeliver, setEkataDeliver] = useState('');
+	const [customerDeliver, setCustomerDeliver] = useState('');
 
 	var today = new Date();
 	var dd = String(today.getDate()).padStart(2, '0');
@@ -23,19 +26,33 @@ function App() {
 	const onThroughputChange = (e) => setThroughput(e.target.value);
 	const ongeographiesChange = (e) => setGeographies(e.target.value);
 	const onanalysisMethodsChange = (e) => setAnalysisMethods(e.target.value);
+	const onDecisionFactorChange = (e) => setDecisionFactor(e.target.value);
+	const onEkataDeliverChange = (e) => setEkataDeliver(e.target.value);
+	const onCustomerDeliverChange = (e) => setCustomerDeliver(e.target.value);
 
 	return (
-		<div>
-			<section>
-				<h1 style={{ textAlign: 'center' }}>Joint Test Plan</h1>
-				<FormControl
-					style={{
-						display: 'flex',
-						width: '30%',
-						justifyContent: 'center',
-						margin: 'auto',
-					}}
-				>
+		<div style={{ width: '100vw', height: '100vh' }}>
+			<div
+				style={{
+					textAlign: 'center',
+					display: 'flex',
+					justifyContent: 'center',
+					flexDirection: 'column',
+				}}
+			>
+				<h1>Joint Test Plan</h1>
+			</div>
+			<Card
+				style={{
+					width: '55%',
+					display: 'flex',
+					justifyContent: 'center',
+					alignItems: 'center',
+					margin: 'auto',
+					padding: '4rem',
+				}}
+			>
+				<FormControl style={{ width: '95%' }}>
 					<TextField
 						id='outlined-basic'
 						label='Customer Name'
@@ -70,8 +87,30 @@ function App() {
 						onChange={onanalysisMethodsChange}
 						sx={{ marginTop: '10px' }}
 					/>
+					<TextField
+						id='outlined-basic'
+						label='Key Decision Factor (i.e. Reduce fraud by x%)'
+						variant='outlined'
+						onChange={onDecisionFactorChange}
+						sx={{ marginTop: '10px' }}
+					/>
+					<h3 style={{ marginTop: '35px' }}>Deliverables</h3>
+					<h4 style={{ marginTop: '-5px' }}>Ekata</h4>
+					<TextField
+						id='outlined-basic'
+						label='Appended file, signal correlation, rule recommendation?'
+						variant='outlined'
+						onChange={onEkataDeliverChange}
+					/>
+					<h4>{customerName}</h4>
+					<TextField
+						id='outlined-basic'
+						label='What will they present to us? (ROI, internal correlation, rules analysis, etc?)'
+						variant='outlined'
+						onChange={onCustomerDeliverChange}
+					/>
 				</FormControl>
-			</section>
+			</Card>
 			<section
 				style={{
 					display: 'flex',
@@ -87,11 +126,14 @@ function App() {
 							latency,
 							throughput,
 							geographies,
-							analysisMethods
+							analysisMethods,
+							decisionFactor,
+							ekataDeliver,
+							customerDeliver
 						)
 					}
 					variant='contained'
-					style={{ marginTop: '10px' }}
+					style={{ margin: '10px' }}
 				>
 					Generate Form
 				</Button>
